@@ -1,0 +1,43 @@
+<h2 class="header">
+  
+  <div class="card-action left-align">
+       <%= @recipe.name %>  
+          <% if can? :update, @recipe %>
+                <%= link_to(edit_recipe_path(@recipe), class: "waves-effect waves-light btn-floating", title: "Редактировать") do %>
+                    <i class='material-icons'>mode_edit</i>
+                <% end %>
+          <% end %>
+          <% if can? :destroy, @recipe %>
+                <%= link_to(recipe_path(@recipe), class: "waves-effect waves-light btn-floating", title: "Удалить",
+                            method: :delete, data: {confirm: "УДАЛИТЬ!! Вы уверены?"}) do %>
+                    <i class='medium material-icons'>delete</i>
+                <% end %>
+          <% end %>
+
+              
+  </div>
+</h2>
+
+<div class="row">
+  <div class="col s12 m3 ">
+     
+      
+       <%= image_tag(@recipe.image, size: "350x350" ,  class: 'activator materialboxed width="650"') %>
+  </div>   
+ 
+      <div class="col s12 m4 right">
+       
+        <%= @recipe.short.to_s.html_safe %>
+      
+        
+      </div>
+    </div>    
+
+        
+      
+  <div class="col s12">
+    <%= @recipe.description.to_s.html_safe %>
+  </div>
+
+
+<%= render partial: "comments/template", locals: {commentable: @recipe, new_comment: @comment} %> 

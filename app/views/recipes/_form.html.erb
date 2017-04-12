@@ -1,0 +1,61 @@
+<%= form_for @recipe, html: {multipart: true} do |f| %>
+
+    <div class="row">
+
+      <div class="col s12 ">
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.text_field :name, required: true, minlength: 10 %>
+            <%= f.label :name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.text_field :short, required: true, minlength: 10 %>
+             <%= f.label :short %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.text_field :tag_list, required: true, minlength: 2 %>
+             <%= f.label :tag_list, "Tags (separated by commas)" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.cktext_area :description, required: true, :ckeditor => {:toolbar => 'full'} %>
+          </div>
+        </div>
+
+      </div>
+
+  <div class="row">
+     <div class="waves-block col s12 m6">   
+   <%= image_tag @recipe.image(:large), class: "materialboxed width='650'   recipe-image" if @recipe.id? %>  </img>
+    </div>
+   </div>    
+       
+
+        <div class="row">
+          <div class="file-field input-field col s12">
+            <div class="btn">
+              <span>Картинка</span>
+              <%= f.file_field :image %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Выберите изображение">
+            </div>
+            
+          </div>
+        </div>
+      
+
+    <%= f.submit t(:save), class: 'waves-effect waves-light btn' %>
+<% end %>
+
+<%= javascript_include_tag 'pickadate' %>
+<script type="text/javascript">
+ $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>

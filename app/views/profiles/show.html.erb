@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col s12 m6">
+    <%= image_tag current_user.gravatar,class: "circle responsive-img profile-image" %>
+    <h4><%= current_user.username %></h4>
+  </div>
+  <div class="col s12">
+    <%= link_to edit_user_profile_path, class: "waves-effect waves-light btn" do %>
+        <%= t("edit") %>
+    <% end %>
+    <%= link_to edit_user_registration_path, class: "waves-effect waves-light btn" do %>
+        <%= t("profile.change_password") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <ul id="tabs-swipe-demo" class="tabs">
+      <li class="tab col s3"><a class="active" href="#tab_common"><%= "Сводка" %></a></li>
+      <li class="tab col s3"><a class="active" href="#tab_notification"><%= "Уведомления" %></a></li>
+      <li class="tab col s3"><a class="active" href="#tab_notification2"><%= "Мои рецепты" %></a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="tab_common" class="col s12">
+  <%= render "tab_common" %>
+</div>
+
+<div id="tab_notification" class="col s12">
+  <%= render "tab_notification" %>
+</div>
+
+<div id="tab_notification2" class="col s12">
+  <%= render "tab_notification2" %>
+</div>
+ 

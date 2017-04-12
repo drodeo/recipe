@@ -1,0 +1,40 @@
+<%= content_tag(:div, class: "section") do %>
+  <%- if controller_name != 'sessions' %>
+    <%= content_tag(:div, class: "col s12") do %>
+      <%= link_to t('login.button'), new_session_path(resource_name) %>
+    <% end %>
+  <% end -%>
+
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= content_tag(:div, class: "col s12") do %>
+      <%= link_to t('sign_up.title'), new_registration_path(resource_name) %>
+    <% end %>
+  <% end -%>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%= content_tag(:div, class: "col s12") do %>
+      <%= link_to t(:forgot_pass), new_password_path(resource_name) %>
+    <% end %>
+  <% end -%>
+
+  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+    <%= content_tag(:div, class: "col s12") do %>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+    <% end %>
+  <% end -%>
+
+
+  <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+    <%= content_tag(:div, class: "col s12") do %>
+      <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
+    <% end %>
+  <% end -%>
+
+  <%- if devise_mapping.omniauthable? %>
+    <%= content_tag(:div, class: "col s12") do %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "#{t("nav.login_oauth")} #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %>
+      <% end -%>
+    <% end %>
+  <% end -%>
+<% end %>

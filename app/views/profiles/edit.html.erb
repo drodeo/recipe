@@ -1,0 +1,33 @@
+<h2><%= t("profile.edit_profile") %></h2>
+  <div class="row">
+      <%= form_for current_user, url: user_profile_path do |f| %>
+    <div class="input-field col s12">
+        <%= f.text_field :username %>
+        <%= f.label :username, class: "active" %>
+    </div>
+
+     <div class="row">
+          <div class="waves-block col s12 m4">
+            <%= link_to image_tag(@current_user.avatar), nil, class: 'activator'  if  @current_user.avatar? %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="file-field input-field col s12">
+            <div class="btn">
+              <span>Картинка</span>
+              <%= f.file_field :avatar %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Выберите изображение">
+            </div>
+            
+          </div>
+        </div>
+    
+        <%= link_to t(:back), user_profile_path, class: "waves-effect waves-light btn" %>
+        <%= f.submit t(:save), class: "waves-effect waves-light btn" %>
+      <% end %>
+
+  </div>
+</p>

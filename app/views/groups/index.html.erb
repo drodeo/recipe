@@ -1,0 +1,37 @@
+<h2><%= t('all_groups') %></h2>
+<div class="row">
+  <div class="col s12">
+  <% if current_user %>
+    <%= link_to(t('group.new'), new_group_path, class: "waves-effect waves-light btn") if can? :create, Group %>
+  <% end %>
+  </div>
+</div>
+
+<div class="section" id="groups_table">
+  <div class="row input-field">
+    <%= form_tag(groups_path, method: :get, remote: true, id: 'group_search_form') do %>
+    <div class="col s8 autocomplete-field">
+      <%= autocomplete_field_tag 'name', '',
+            autocomplete_group_name_groups_path,
+            :size => 75, 
+            id: "autocomplete", 
+            class: "autocomplete",
+            data: { "append-to":  ".autocomplete-field", 
+                    "id_element": "#name"
+                  }
+      %>
+    </div>
+    <div class="col s2">
+      <%= button_tag t(:search), class: "waves-light btn" %>
+    </div>
+    <% end %>
+    <div class="col s2">
+      <%= link_to t(:reset), groups_path, class: "waves-light btn", type: 'reset' %>
+    </div>
+    </div>
+</div>
+
+  <%= render partial: 'table', locals: { groups: @groups } %>
+
+  <%= paginate @groups %>
+</div>

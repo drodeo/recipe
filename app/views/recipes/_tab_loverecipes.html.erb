@@ -1,0 +1,31 @@
+<% if can? :create, Recipe %>
+<div class="row">
+  <div class="col s12 m9">
+    
+        <%= link_to 'Новый рецепт', new_recipe_path, class: "waves-effect waves-light btn" %>
+       
+  </div>
+</div>    
+
+  <% @recipes.each do |recipe|  %>
+  <div class="row">
+
+    <div class="col s12 m4">
+    
+     <%= image_tag(recipe.image, size: "250x250" ,  class: 'activator materialboxed width="650"') %>
+    </div>
+    <div class="col s12 m8">
+     <h3><%=link_to recipe.name, recipe_path(recipe) %></h3></br>
+     <%= recipe.short %>
+    </div>
+  
+   </div>
+  <% end %>
+
+  <%= paginate @recipes %>
+  <% else %>
+   <div class="chip">
+    Вы должны авторизоваться
+   </div>
+   
+  <% end %>  

@@ -1,0 +1,8 @@
+  <h3 class="header"> Теги </h3>
+
+   <% @alltags.each do |most| %>
+	<div class="chip"> 
+	<h6><%= link_to most.name, tag_path(most.name) %>  </h6></div>
+
+
+   <% end %>

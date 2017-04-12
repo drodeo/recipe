@@ -1,0 +1,12 @@
+ru:
+  forgot_pass: 'Забыли пароль?'
+  nav:
+    all_purchases: 'Все закупки'
+    groups: 'Группы'
+    all_groups: 'Все группы'
+    about: 'Как это работает'
+    log_in: 'Вход / Регистрация'
+    log_out: 'Выход'
+    profile: 'Профиль'
+    orders: 'Заказы'
+    login_oauth: 'Вход через'

@@ -1,0 +1,21 @@
+<h3 class="header"><%= "Свежие рецепты" %></h3>
+
+<div class="row">
+  <% @recipes.each do |recipe|  %>
+  <div class="col s12 m6">
+    <%= render :partial => "recipes/recipe_card", locals: { recipe: recipe } %>
+  </div>
+  <% end %>
+</div>
+
+
+
+   
+   <% ActsAsTaggableOn::Tag.most_used.each do |most| %>
+	<div class="chip"> 
+	<h6><%= link_to most.name, tag_path(most.name) %>  </h6></div>
+
+
+   <% end %>
+   <div class="chip"> 
+   <%= link_to 'Все теги', alltags_path %></div>
