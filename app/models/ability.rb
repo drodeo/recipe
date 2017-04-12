@@ -6,7 +6,6 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :user
-      can [:edit, :update, :destroy], [Order], user_id: user.id # @todo add Comment model
       can [:edit, :update], [User], id: user.id
       can [:update, :destroy], [Recipe], owner: user
       can :toggle_group, Group

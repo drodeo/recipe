@@ -6,8 +6,11 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   
   def index
-     @recipes = Recipe.order('created_at DESC').page(params[:page]).per(10)
-   
+     if params[:tag]
+       @recipes = Recipe.tagged_with(params[:tag]).page(params[:page]).per(10)
+     else
+       @recipes = Recipe.order('created_at DESC').page(params[:page]).per(10)
+     end
   end
 
   def new
