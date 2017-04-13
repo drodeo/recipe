@@ -2,11 +2,12 @@ require 'factory_girl_rails'
 require_relative 'support/controller_helpers'
 require 'devise'
 
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
 SimpleCov.start
+
+#require 'codeclimate-test-reporter'
+#CodeClimate::TestReporter.start
+
 
 RSpec.configure do |config|
   config.include ControllerHelpers, type: :controller
