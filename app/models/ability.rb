@@ -8,7 +8,6 @@ class Ability
     elsif user.has_role? :user
       can [:edit, :update], [User], id: user.id
       can [:update, :destroy], [Recipe], owner: user
-      can :toggle_group, Group
       can :create, [Recipe]
       can :read, :all
     elsif user.has_role? :banned

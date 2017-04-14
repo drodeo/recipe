@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'about'   => 'pages#about'
   get 'alltags' => 'pages#alltags'
+  get 'addtolove' => 'recipes#addtolove'
   resource :profile, only: [:show, :edit, :update], as: :user_profile
 
   devise_for :users, :controllers => { :omniauth_callbacks => "oauths" }

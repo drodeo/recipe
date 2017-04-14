@@ -5,9 +5,8 @@ class User < ActiveRecord::Base
          :rememberable,  :validatable, :omniauthable
 
   has_many :comments, dependent: :destroy
-  has_many :orders, dependent: :destroy
-  has_and_belongs_to_many :groups
   has_many :recipes, foreign_key: "owner_id"
+  has_many :loves, class_name: "Recipe", foreign_key: "love_id"
 
   has_many :active_relationships,  class_name:  "Following",
                                    foreign_key: "follower_id",

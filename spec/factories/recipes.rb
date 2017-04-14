@@ -21,4 +21,5 @@ end
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  owner_id           :integer
+#  love_id            :integer          default(0)
 #

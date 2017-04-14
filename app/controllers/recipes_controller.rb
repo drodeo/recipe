@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
        @recipes = Recipe.tagged_with(params[:tag]).page(params[:page]).per(10)
      else
        @recipes = Recipe.order('created_at DESC').page(params[:page]).per(10)
+       @loves = Recipe.order('created_at DESC').page(params[:page]).per(10)
      end
   end
 
@@ -19,6 +20,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
+  end
+  
+  def addtolove
+    @recipe = Recipe.find(params[:format])
+    
   end
 
   def destroy
@@ -61,6 +67,9 @@ class RecipesController < ApplicationController
 
   def find_recipe
     @recipe = Recipe.find(params[:id])
+    @recipe.love_id=current_user.id
+    @recipe.save
+    redirect_to recipes_path
   end
 
   def recipe_params

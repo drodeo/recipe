@@ -12,7 +12,7 @@
     <%= image_tag(recipe.image, size: "250x250" ,  class: 'activator materialboxed width="650"') %>
    </div>
     <div class="col s12 m8">
-     <h3><%= link_to(root_path, class: "waves-effect waves-light btn-floating", title: "В любимые рецепты") do %>
+     <h3><%= link_to(addtolove_path(recipe), class: "waves-effect waves-light btn-floating", title: "В любимые рецепты") do %>
                     <i class='material-icons'>favorite</i>
                 <% end %>
      <%=link_to recipe.name, recipe_path(recipe) %></br></h3></br>
