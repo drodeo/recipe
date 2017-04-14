@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_many :recipes, foreign_key: "owner_id"
-  has_many :loves, class_name: "Recipe", foreign_key: "love_id"
+  has_many :love, class_name: "Recipe", foreign_key: "love_id"
 
   has_many :active_relationships,  class_name:  "Following",
                                    foreign_key: "follower_id",

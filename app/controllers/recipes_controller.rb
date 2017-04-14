@@ -24,7 +24,9 @@ class RecipesController < ApplicationController
   
   def addtolove
     @recipe = Recipe.find(params[:format])
-    
+    @recipe.love_id=current_user.id
+    @recipe.save
+    redirect_to recipes_path
   end
 
   def destroy
@@ -67,9 +69,6 @@ class RecipesController < ApplicationController
 
   def find_recipe
     @recipe = Recipe.find(params[:id])
-    @recipe.love_id=current_user.id
-    @recipe.save
-    redirect_to recipes_path
   end
 
   def recipe_params
