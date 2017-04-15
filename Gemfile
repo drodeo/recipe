@@ -39,8 +39,7 @@ end
 
 group :test do
   gem 'libnotify', '~> 0.9.1'
-  gem 'shoulda'
-  gem 'cucumber-rails', :require => false
+  gem "shoulda-matchers"
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov', require: false

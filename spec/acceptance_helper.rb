@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.configure do |config|
-  Capybara.javascript_driver = :webkit
-  Capybara.default_max_wait_time = 10
-  Capybara.ignore_hidden_elements = false
+
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
@@ -26,7 +24,4 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  Capybara::Webkit.configure do |config|
-    config.block_unknown_urls
-  end
 end

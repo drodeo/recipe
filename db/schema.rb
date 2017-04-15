@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20170414110902) do
     t.string   "name"
     t.text     "description"
     t.date     "end_date"
-    t.string   "status"
+    t.integer  "status"
     t.integer  "group_id"
     t.integer  "owner_id"
     t.datetime "created_at",                                  null: false
@@ -156,10 +156,10 @@ ActiveRecord::Schema.define(version: 20170414110902) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
+    t.integer  "taggable_id"
     t.string   "tagger_type"
+    t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
@@ -184,8 +184,8 @@ ActiveRecord::Schema.define(version: 20170414110902) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "provider"
